@@ -14,7 +14,8 @@ exports.pluralization = [
   [/(child)$/gi, '$1ren'],
   [/^(ox)$/gi, '$1en'],
   [/(ax|test)is$/gi, '$1es'],
-  [/(octop|vir)us$/gi, '$1i'],
+  [/(vir)us$/gi, '$1i'],
+  [/(octop)us$/gi, '$1odes'],
   [/(alias|status)$/gi, '$1es'],
   [/(bu)s$/gi, '$1ses'],
   [/(buffal|tomat|potat)o$/gi, '$1oes'],
@@ -30,7 +31,7 @@ exports.pluralization = [
   [/(quiz)$/gi, '$1zes'],
   [/s$/gi, 's'],
   [/([^a-z])$/, '$1'],
-  [/$/gi, 's']
+  [/$/gi, 's'],
 ];
 var rules = exports.pluralization;
 
@@ -68,7 +69,7 @@ exports.uncountables = [
   'news',
   'expertise',
   'status',
-  'media'
+  'media',
 ];
 var uncountables = exports.uncountables;
 
@@ -84,7 +85,7 @@ function pluralize(str) {
   var found;
   str = str.toLowerCase();
   if (!~uncountables.indexOf(str)) {
-    found = rules.filter(function(rule) {
+    found = rules.filter(function (rule) {
       return str.match(rule[0]);
     });
     if (found[0]) {
